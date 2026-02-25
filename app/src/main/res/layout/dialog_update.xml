@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Premium update dialog layout -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@color/surface">
+
+    <!-- Icon + Title -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_launcher_foreground"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="Update" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update Available"
+            android:textSize="20sp"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" />
+
+    </LinearLayout>
+
+    <!-- Version info -->
+    <TextView
+        android:id="@+id/textUpdateVersion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/secondary"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Release notes -->
+    <TextView
+        android:id="@+id/textReleaseNotes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/text_secondary"
+        android:lineSpacingExtra="4dp"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Download progress bar -->
+    <ProgressBar
+        android:id="@+id/progressDownload"
+        style="@style/Widget.Material3.LinearProgressIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="false"
+        android:max="100"
+        android:indeterminateTint="@color/secondary"
+        android:progressTint="@color/secondary"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Download status text -->
+    <TextView
+        android:id="@+id/textDownloadProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:textColor="@color/text_muted"
+        android:gravity="center"
+        android:fontFamily="monospace" />
+
+</LinearLayout>

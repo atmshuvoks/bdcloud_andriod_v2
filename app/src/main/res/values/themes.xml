@@ -106,4 +106,10 @@
         <item name="android:letterSpacing">0.08</item>
         <item name="android:textAllCaps">true</item>
     </style>
+
+    <!-- Update dialog theme -->
+    <style name="BdCloud_UpdateDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="android:background">@color/surface</item>
+        <item name="buttonBarPositiveButtonStyle">@style/BdCloud.Button.Primary</item>
+    </style>
 </resources>

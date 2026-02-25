@@ -185,3 +185,34 @@ data class SsoResponse(
     val expiresInSeconds: Int? = null,
     val error: ErrorBody? = null
 )
+
+// ── App Update ────────────────────────────────────────────
+
+@JsonClass(generateAdapter = true)
+data class AppVersionResponse(
+    val success: Boolean,
+    @Json(name = "latest_version") val latestVersion: String? = null,
+    @Json(name = "version_code") val versionCode: Int? = null,
+    @Json(name = "download_url") val downloadUrl: String? = null,
+    @Json(name = "release_notes") val releaseNotes: String? = null,
+    @Json(name = "force_update") val forceUpdate: Boolean? = false,
+    val error: ErrorBody? = null
+)
+
+// ── Server Notifications ──────────────────────────────────
+
+@JsonClass(generateAdapter = true)
+data class AppNotification(
+    val id: String,
+    val title: String,
+    val message: String,
+    val type: String? = "info",  // info, warning, promo
+    @Json(name = "created_at") val createdAt: String? = null
+)
+
+@JsonClass(generateAdapter = true)
+data class NotificationsResponse(
+    val success: Boolean,
+    val notifications: List<AppNotification>? = null,
+    val error: ErrorBody? = null
+)

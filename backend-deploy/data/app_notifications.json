@@ -1,0 +1,11 @@
+{
+    "notifications": [
+        {
+            "id": "welcome-2026",
+            "title": "🌙 Ramadan Mubarak!",
+            "message": "Wishing you a blessed Ramadan. Enjoy fast, secure browsing with BDCLOUD VPN.",
+            "type": "info",
+            "created_at": "2026-02-26T00:00:00Z"
+        }
+    ]
+}

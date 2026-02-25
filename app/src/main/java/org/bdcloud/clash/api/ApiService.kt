@@ -37,4 +37,12 @@ interface ApiService {
 
     @GET("payments/history")
     suspend fun getPaymentHistory(): Response<PaymentHistoryResponse>
+
+    // ── App Updates & Notifications ────────────────────────
+
+    @GET("app/version")
+    suspend fun getAppVersion(): Response<AppVersionResponse>
+
+    @GET("app/notifications")
+    suspend fun getNotifications(): Response<NotificationsResponse>
 }

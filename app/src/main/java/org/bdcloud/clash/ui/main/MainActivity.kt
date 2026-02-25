@@ -2,11 +2,15 @@ package org.bdcloud.clash.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.bdcloud.clash.R
 import org.bdcloud.clash.ui.login.LoginActivity
+import org.bdcloud.clash.util.AppNotificationManager
+import org.bdcloud.clash.util.AppUpdateManager
 import org.bdcloud.clash.util.TokenManager
 
 class MainActivity : AppCompatActivity() {
@@ -27,6 +31,12 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             loadFragment(DashboardFragment())
         }
+
+        // Check for updates and notifications after UI loads
+        Handler(Looper.getMainLooper()).postDelayed({
+            AppUpdateManager.checkForUpdate(this)
+            AppNotificationManager.checkNotifications(this)
+        }, 2000)
 
         bottomNav.setOnItemSelectedListener { item ->
             val fragment: Fragment = when (item.itemId) {
