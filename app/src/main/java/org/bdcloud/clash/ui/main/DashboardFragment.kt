@@ -11,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import android.widget.ImageButton
+import android.view.animation.AnimationUtils
 import com.google.android.material.chip.ChipGroup
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -38,6 +39,7 @@ class DashboardFragment : Fragment() {
 
     private var isConnected = false
     private var selectedMode = ClashManager.ProxyMode.SELECT
+    private var currentAnim: android.view.animation.Animation? = null
 
     private val vpnPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -127,6 +129,8 @@ class DashboardFragment : Fragment() {
             viewConnectGlow.setBackgroundResource(R.drawable.bg_connect_circle_connected)
             textConnectHint.text = "Tap to disconnect"
             textConnectHint.setTextColor(resources.getColor(R.color.status_connected, null))
+            // Slow breathe pulse when connected
+            startPulse(R.anim.pulse_breathe)
             val proxyName = when (ClashManager.currentMode) {
                 ClashManager.ProxyMode.SELECT -> ClashManager.selectedProxy?.name ?: "${ClashManager.proxies.size} proxies"
                 ClashManager.ProxyMode.URL_TEST -> "Auto Best (${ClashManager.proxies.size} proxies)"
@@ -141,6 +145,7 @@ class DashboardFragment : Fragment() {
             textConnectHint.text = "Tap to connect"
             textConnectHint.setTextColor(resources.getColor(R.color.text_muted, null))
             textProxyName.text = "Tap connect to start"
+            stopPulse()
 
             if (wasConnected) {
                 textError.text = "VPN disconnected — check Logs tab for details"
@@ -150,11 +155,27 @@ class DashboardFragment : Fragment() {
         btnConnect.isEnabled = true
     }
 
+    private fun startPulse(animRes: Int) {
+        stopPulse()
+        currentAnim = AnimationUtils.loadAnimation(requireContext(), animRes)
+        viewConnectGlow.startAnimation(currentAnim)
+    }
+
+    private fun stopPulse() {
+        viewConnectGlow.clearAnimation()
+        currentAnim = null
+    }
+
     private fun loadProxiesAndConnect() {
         textError.visibility = View.GONE
         btnConnect.isEnabled = false
         textStatus.text = getString(R.string.vpn_connecting)
         textStatus.setTextColor(resources.getColor(R.color.status_connecting, null))
+        viewConnectGlow.setBackgroundResource(R.drawable.bg_connect_circle_connecting)
+        textConnectHint.text = "Connecting..."
+        textConnectHint.setTextColor(resources.getColor(R.color.status_connecting, null))
+        // Fast pulse during connection
+        startPulse(R.anim.pulse_connecting)
 
         lifecycleScope.launch {
             try {
