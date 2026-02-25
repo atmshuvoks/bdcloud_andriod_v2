@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/BdCloud.Card"
+    android:layout_margin="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp">
+
+        <!-- Status indicator dot -->
+        <View
+            android:id="@+id/viewStatus"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:background="@drawable/bg_connect_button"
+            android:layout_marginEnd="12dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textProxyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/text_primary"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textProxyLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                android:id="@+id/textProxyServer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:textColor="@color/text_muted"
+                android:layout_marginTop="2dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textLatency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/status_connected"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

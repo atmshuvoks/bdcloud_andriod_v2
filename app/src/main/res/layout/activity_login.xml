@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp">
+
+        <!-- Branding -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BD"
+            android:textSize="48sp"
+            android:textColor="@color/secondary"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-black"
+            android:background="@drawable/bg_connect_button"
+            android:gravity="center"
+            android:layout_marginBottom="12dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_title"
+            android:textSize="32sp"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_subtitle"
+            android:textSize="14sp"
+            android:textColor="@color/text_muted"
+            android:layout_marginBottom="40dp" />
+
+        <!-- Login Form Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/BdCloud.Card"
+            app:cardBackgroundColor="@color/surface"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/card_border">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/BdCloud.TextInput"
+                    android:hint="@string/email_hint"
+                    android:layout_marginBottom="16dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/BdCloud.TextInput.EditText"
+                        android:inputType="textEmailAddress"
+                        android:autofillHints="emailAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/BdCloud.TextInput"
+                    android:hint="@string/password_hint"
+                    app:endIconMode="password_toggle"
+                    android:layout_marginBottom="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/BdCloud.TextInput.EditText"
+                        android:inputType="textPassword"
+                        android:autofillHints="password" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/textError"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/error"
+                    android:textSize="13sp"
+                    android:visibility="gone"
+                    android:layout_marginBottom="8dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/BdCloud.Button.Primary"
+                    android:text="@string/sign_in"
+                    android:layout_marginTop="8dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCreateAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/BdCloud.Button.Secondary"
+                    android:text="@string/create_account"
+                    android:layout_marginTop="8dp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <ProgressBar
+            android:id="@+id/progressLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            android:indeterminateTint="@color/secondary" />
+
+    </LinearLayout>
+</ScrollView>

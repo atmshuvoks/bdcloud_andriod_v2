@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- Header with refresh -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/nav_proxies"
+            android:textSize="20sp"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:text="@string/refresh"
+            android:textColor="@color/secondary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPingAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:text="@string/test_latency"
+            android:textColor="@color/secondary" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressProxies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.Material3.LinearProgressIndicator"
+        android:visibility="gone"
+        android:indeterminateTint="@color/secondary" />
+
+    <TextView
+        android:id="@+id/textError"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/error"
+        android:textSize="13sp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/textEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_proxies"
+        android:textColor="@color/text_muted"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:padding="48dp"
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerProxies"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:clipToPadding="false" />
+
+</LinearLayout>

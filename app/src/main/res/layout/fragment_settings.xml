@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nav_settings"
+            android:textSize="20sp"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Device Info Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/BdCloud.Card"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Account"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:id="@+id/textSettingsEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary" />
+
+                <TextView
+                    android:id="@+id/textSettingsSub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="4dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider"
+                    android:layout_marginVertical="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/device_id_label"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_muted" />
+
+                <TextView
+                    android:id="@+id/textDeviceId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_secondary"
+                    android:fontFamily="monospace"
+                    android:layout_marginTop="2dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider"
+                    android:layout_marginVertical="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_version_label"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_muted" />
+
+                <TextView
+                    android:id="@+id/textVersion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="2dp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Actions Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/BdCloud.Card"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnResetDevice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/BdCloud.Button.Secondary"
+                    android:text="@string/reset_device" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnLogout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/BdCloud.Button.Secondary"
+                    android:text="@string/logout"
+                    android:layout_marginTop="8dp"
+                    app:strokeColor="@color/error"
+                    android:textColor="@color/error"
+                    xmlns:app="http://schemas.android.com/apk/res-auto" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</ScrollView>

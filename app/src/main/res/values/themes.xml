@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base dark theme -->
+    <style name="Theme.BedCloudClash" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondaryVariant">@color/secondary_variant</item>
+        <item name="colorOnSecondary">@color/on_secondary</item>
+        <item name="colorError">@color/error</item>
+        <item name="colorOnError">@color/on_error</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        <item name="android:statusBarColor">@color/status_bar</item>
+        <item name="android:navigationBarColor">@color/nav_bg</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="Theme.BedCloudClash.NoActionBar" parent="Theme.BedCloudClash">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Card style -->
+    <style name="BdCloud.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/card_bg</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">4dp</item>
+        <item name="contentPadding">16dp</item>
+    </style>
+
+    <!-- Primary Button -->
+    <style name="BdCloud.Button.Primary" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/secondary</item>
+        <item name="android:textColor">@color/on_secondary</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:minHeight">52dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <!-- Secondary Button -->
+    <style name="BdCloud.Button.Secondary" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/secondary</item>
+        <item name="android:textColor">@color/secondary</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+
+    <!-- Text Input -->
+    <style name="BdCloud.TextInput" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/secondary</item>
+        <item name="hintTextColor">@color/secondary</item>
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
+    </style>
+
+    <style name="BdCloud.TextInput.EditText" parent="Widget.Material3.TextInputEditText.OutlinedBox">
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+</resources>

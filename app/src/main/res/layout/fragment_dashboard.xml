@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Connection Status Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/BdCloud.Card"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="24dp">
+
+                <TextView
+                    android:id="@+id/textStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/vpn_disconnected"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/status_disconnected"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/textProxyName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No proxy selected"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginBottom="20dp" />
+
+                <!-- Large connect button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnConnect"
+                    android:layout_width="200dp"
+                    android:layout_height="56dp"
+                    style="@style/BdCloud.Button.Primary"
+                    android:text="@string/connect"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- User Info Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/BdCloud.Card"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/textEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textSubscription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="4dp" />
+
+                <TextView
+                    android:id="@+id/textExpires"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/text_muted"
+                    android:layout_marginTop="2dp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Quick Actions -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/BdCloud.Card">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Proxy Mode"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginBottom="12dp" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroupMode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="true"
+                    app:selectionRequired="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipSelect"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Select"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:checked="true" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipAutoTest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Auto Best"
+                        style="@style/Widget.Material3.Chip.Filter" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipLoadBalance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Load Balance"
+                        style="@style/Widget.Material3.Chip.Filter" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipFallback"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fallback"
+                        style="@style/Widget.Material3.Chip.Filter" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+                <TextView
+                    android:id="@+id/textError"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/error"
+                    android:textSize="13sp"
+                    android:visibility="gone"
+                    android:layout_marginTop="8dp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</ScrollView>

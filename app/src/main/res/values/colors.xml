@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary palette – deep ocean gradient -->
+    <color name="primary">#FF1A1B3D</color>
+    <color name="primary_variant">#FF0D0E2B</color>
+    <color name="on_primary">#FFFFFFFF</color>
+
+    <!-- Secondary – vibrant electric blue -->
+    <color name="secondary">#FF4FC3F7</color>
+    <color name="secondary_variant">#FF0288D1</color>
+    <color name="on_secondary">#FF000000</color>
+
+    <!-- Accent – vivid cyan glow -->
+    <color name="accent">#FF00E5FF</color>
+
+    <!-- Surface / background – deep dark -->
+    <color name="background">#FF0A0B1E</color>
+    <color name="surface">#FF141530</color>
+    <color name="surface_elevated">#FF1C1D40</color>
+    <color name="on_background">#FFE0E0F0</color>
+    <color name="on_surface">#FFE0E0F0</color>
+
+    <!-- Cards -->
+    <color name="card_bg">#FF1A1B3D</color>
+    <color name="card_border">#33FFFFFF</color>
+
+    <!-- Status colors -->
+    <color name="status_connected">#FF00E676</color>
+    <color name="status_disconnected">#FFFF5252</color>
+    <color name="status_connecting">#FFFFAB40</color>
+
+    <!-- Text -->
+    <color name="text_primary">#FFFFFFFF</color>
+    <color name="text_secondary">#FFB0B0CC</color>
+    <color name="text_muted">#FF6E6E8A</color>
+
+    <!-- Error -->
+    <color name="error">#FFFF5252</color>
+    <color name="on_error">#FFFFFFFF</color>
+
+    <!-- Navigation -->
+    <color name="nav_bg">#FF0D0E2B</color>
+    <color name="nav_selected">#FF4FC3F7</color>
+    <color name="nav_unselected">#FF6E6E8A</color>
+
+    <!-- Misc -->
+    <color name="ripple">#334FC3F7</color>
+    <color name="divider">#1AFFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="status_bar">#FF070818</color>
+</resources>
