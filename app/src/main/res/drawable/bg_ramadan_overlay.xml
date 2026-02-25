@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Crescent moon for Ramadan background overlay -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    <!-- Crescent moon -->
+    <path
+        android:pathData="M60,10 C35,10 15,30 15,55 C15,80 35,100 60,100 C45,90 37,73 37,55 C37,37 45,20 60,10Z"
+        android:fillColor="#FFD54F"
+        android:fillAlpha="0.12" />
+    <!-- Star 1 (top right) -->
+    <path
+        android:pathData="M85,20 L87,26 L93,26 L88,30 L90,36 L85,32 L80,36 L82,30 L77,26 L83,26Z"
+        android:fillColor="#FFD54F"
+        android:fillAlpha="0.15" />
+    <!-- Star 2 (mid right) -->
+    <path
+        android:pathData="M95,50 L96.5,54 L101,54 L97.5,57 L99,61 L95,58 L91,61 L92.5,57 L89,54 L93.5,54Z"
+        android:fillColor="#FFD54F"
+        android:fillAlpha="0.10" />
+    <!-- Star 3 (small) -->
+    <path
+        android:pathData="M75,38 L76,41 L79,41 L76.5,43 L77.5,46 L75,44 L72.5,46 L73.5,43 L71,41 L74,41Z"
+        android:fillColor="#FFD54F"
+        android:fillAlpha="0.08" />
+</vector>

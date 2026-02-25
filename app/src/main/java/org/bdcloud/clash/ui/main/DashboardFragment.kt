@@ -1,5 +1,7 @@
 package org.bdcloud.clash.ui.main
 
+import android.content.Intent
+import android.net.Uri
 import android.net.VpnService
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -96,6 +98,11 @@ class DashboardFragment : Fragment() {
                 else -> ClashManager.ProxyMode.SELECT
             }
             ClashManager.currentMode = selectedMode
+        }
+
+        // Telegram group FAB
+        view.findViewById<ImageButton>(R.id.btnTelegram)?.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/premiumeconomy")))
         }
     }
 
