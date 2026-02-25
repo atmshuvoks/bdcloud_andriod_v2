@@ -11,33 +11,31 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:padding="32dp">
+        android:paddingHorizontal="28dp"
+        android:paddingTop="60dp"
+        android:paddingBottom="32dp">
 
-        <!-- Branding -->
+        <!-- ═ Branding ═ -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="BD"
-            android:textSize="48sp"
+            android:textSize="56sp"
             android:textColor="@color/secondary"
             android:textStyle="bold"
             android:fontFamily="sans-serif-black"
-            android:background="@drawable/bg_connect_button"
-            android:gravity="center"
-            android:layout_marginBottom="12dp"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp" />
+            android:letterSpacing="0.08"
+            android:layout_marginBottom="8dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login_title"
-            android:textSize="32sp"
+            android:textSize="28sp"
             android:textColor="@color/text_primary"
             android:textStyle="bold"
-            android:fontFamily="sans-serif-medium" />
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.01" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -45,16 +43,13 @@
             android:text="@string/login_subtitle"
             android:textSize="14sp"
             android:textColor="@color/text_muted"
-            android:layout_marginBottom="40dp" />
+            android:layout_marginBottom="48dp" />
 
-        <!-- Login Form Card -->
+        <!-- ═ Login Form ═ -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/BdCloud.Card"
-            app:cardBackgroundColor="@color/surface"
-            app:strokeWidth="1dp"
-            app:strokeColor="@color/card_border">
+            style="@style/BdCloud.Card">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -127,7 +122,7 @@
             android:id="@+id/progressLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:visibility="gone"
             android:indeterminateTint="@color/secondary" />
 

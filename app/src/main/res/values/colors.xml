@@ -1,51 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Primary palette – deep ocean gradient -->
-    <color name="primary">#FF1A1B3D</color>
-    <color name="primary_variant">#FF0D0E2B</color>
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- BDCLOUD Premium — Deep Space Color System              -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <!-- Primary — deep navy cosmos -->
+    <color name="primary">#FF0F1128</color>
+    <color name="primary_variant">#FF080A1A</color>
     <color name="on_primary">#FFFFFFFF</color>
 
-    <!-- Secondary – vibrant electric blue -->
-    <color name="secondary">#FF4FC3F7</color>
-    <color name="secondary_variant">#FF0288D1</color>
+    <!-- Secondary — electric cyan -->
+    <color name="secondary">#FF00D4FF</color>
+    <color name="secondary_variant">#FF0097B2</color>
     <color name="on_secondary">#FF000000</color>
 
-    <!-- Accent – vivid cyan glow -->
+    <!-- Accent — neon glow -->
     <color name="accent">#FF00E5FF</color>
+    <color name="accent_glow">#4D00E5FF</color>
 
-    <!-- Surface / background – deep dark -->
-    <color name="background">#FF0A0B1E</color>
-    <color name="surface">#FF141530</color>
-    <color name="surface_elevated">#FF1C1D40</color>
-    <color name="on_background">#FFE0E0F0</color>
-    <color name="on_surface">#FFE0E0F0</color>
+    <!-- Background — ultra deep -->
+    <color name="background">#FF060818</color>
+    <color name="surface">#FF0E1130</color>
+    <color name="surface_elevated">#FF161940</color>
+    <color name="on_background">#FFE8E8F8</color>
+    <color name="on_surface">#FFE8E8F8</color>
 
-    <!-- Cards -->
-    <color name="card_bg">#FF1A1B3D</color>
-    <color name="card_border">#33FFFFFF</color>
+    <!-- Cards — glassmorphism -->
+    <color name="card_bg">#CC101338</color>
+    <color name="card_bg_solid">#FF101338</color>
+    <color name="card_border">#2600D4FF</color>
+    <color name="card_border_active">#6600D4FF</color>
 
-    <!-- Status colors -->
+    <!-- Gradients -->
+    <color name="gradient_start">#FF0B0D28</color>
+    <color name="gradient_mid">#FF0A1635</color>
+    <color name="gradient_end">#FF061028</color>
+    <color name="hero_glow_start">#1A00D4FF</color>
+    <color name="hero_glow_end">#00000000</color>
+
+    <!-- Connect button states -->
+    <color name="connect_idle">#FF1A2040</color>
+    <color name="connect_idle_ring">#FF00D4FF</color>
+    <color name="connect_active">#FF002A1A</color>
+    <color name="connect_active_ring">#FF00E676</color>
+    <color name="connect_connecting_ring">#FFFFAB40</color>
+
+    <!-- Status -->
     <color name="status_connected">#FF00E676</color>
+    <color name="status_connected_glow">#4D00E676</color>
     <color name="status_disconnected">#FFFF5252</color>
     <color name="status_connecting">#FFFFAB40</color>
 
     <!-- Text -->
     <color name="text_primary">#FFFFFFFF</color>
-    <color name="text_secondary">#FFB0B0CC</color>
-    <color name="text_muted">#FF6E6E8A</color>
+    <color name="text_secondary">#FFB8B8D0</color>
+    <color name="text_muted">#FF5C5C7A</color>
+    <color name="text_accent">#FF00D4FF</color>
+
+    <!-- Latency indicators -->
+    <color name="latency_good">#FF00E676</color>
+    <color name="latency_medium">#FFFFAB40</color>
+    <color name="latency_bad">#FFFF5252</color>
 
     <!-- Error -->
     <color name="error">#FFFF5252</color>
     <color name="on_error">#FFFFFFFF</color>
 
     <!-- Navigation -->
-    <color name="nav_bg">#FF0D0E2B</color>
-    <color name="nav_selected">#FF4FC3F7</color>
-    <color name="nav_unselected">#FF6E6E8A</color>
+    <color name="nav_bg">#F0080A1A</color>
+    <color name="nav_selected">#FF00D4FF</color>
+    <color name="nav_unselected">#FF4A4A6A</color>
+    <color name="nav_indicator">#1A00D4FF</color>
 
     <!-- Misc -->
-    <color name="ripple">#334FC3F7</color>
+    <color name="ripple">#2200D4FF</color>
     <color name="divider">#1AFFFFFF</color>
     <color name="transparent">#00000000</color>
-    <color name="status_bar">#FF070818</color>
+    <color name="status_bar">#FF040610</color>
+
+    <!-- Chip colors -->
+    <color name="chip_selected_bg">#3300D4FF</color>
+    <color name="chip_unselected_bg">#FF161940</color>
+    <color name="chip_selected_text">#FF00D4FF</color>
+    <color name="chip_unselected_text">#FF8888AA</color>
+    <color name="chip_selected_stroke">#6600D4FF</color>
+
+    <!-- Terminal / logs -->
+    <color name="terminal_bg">#FF050810</color>
+    <color name="terminal_text">#FF44DD88</color>
+    <color name="terminal_text_dim">#FF2A8855</color>
 </resources>

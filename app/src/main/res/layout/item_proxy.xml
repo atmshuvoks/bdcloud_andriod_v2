@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Premium proxy list item with glassmorphism and latency indicators -->
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     style="@style/BdCloud.Card"
-    android:layout_margin="8dp">
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:padding="16dp">
+        android:paddingHorizontal="18dp"
+        android:paddingVertical="16dp">
 
-        <!-- Status indicator dot -->
+        <!-- Status dot -->
         <View
             android:id="@+id/viewStatus"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:background="@drawable/bg_connect_button"
-            android:layout_marginEnd="12dp" />
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@drawable/bg_status_dot"
+            android:layout_marginEnd="14dp" />
 
+        <!-- Server info -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -31,15 +35,16 @@
                 android:id="@+id/textProxyName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 android:textColor="@color/text_primary"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium" />
 
             <TextView
                 android:id="@+id/textProxyLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
+                android:textSize="12sp"
                 android:textColor="@color/text_secondary"
                 android:layout_marginTop="2dp" />
 
@@ -49,17 +54,20 @@
                 android:layout_height="wrap_content"
                 android:textSize="11sp"
                 android:textColor="@color/text_muted"
+                android:fontFamily="monospace"
                 android:layout_marginTop="2dp" />
 
         </LinearLayout>
 
+        <!-- Latency badge -->
         <TextView
             android:id="@+id/textLatency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="@color/status_connected"
-            android:textStyle="bold" />
+            android:textSize="13sp"
+            android:textColor="@color/latency_good"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" />
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

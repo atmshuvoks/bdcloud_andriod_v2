@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.google.android.material.button.MaterialButton
+import android.widget.ImageButton
 import com.google.android.material.chip.ChipGroup
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,7 +27,9 @@ class DashboardFragment : Fragment() {
 
     private lateinit var textStatus: TextView
     private lateinit var textProxyName: TextView
-    private lateinit var btnConnect: MaterialButton
+    private lateinit var btnConnect: ImageButton
+    private lateinit var viewConnectGlow: View
+    private lateinit var textConnectHint: TextView
     private lateinit var textEmail: TextView
     private lateinit var textSubscription: TextView
     private lateinit var textExpires: TextView
@@ -57,6 +59,8 @@ class DashboardFragment : Fragment() {
         textStatus = view.findViewById(R.id.textStatus)
         textProxyName = view.findViewById(R.id.textProxyName)
         btnConnect = view.findViewById(R.id.btnConnect)
+        viewConnectGlow = view.findViewById(R.id.viewConnectGlow)
+        textConnectHint = view.findViewById(R.id.textConnectHint)
         textEmail = view.findViewById(R.id.textEmail)
         textSubscription = view.findViewById(R.id.textSubscription)
         textExpires = view.findViewById(R.id.textExpires)
@@ -120,7 +124,9 @@ class DashboardFragment : Fragment() {
         if (isConnected) {
             textStatus.text = getString(R.string.vpn_connected)
             textStatus.setTextColor(resources.getColor(R.color.status_connected, null))
-            btnConnect.text = getString(R.string.disconnect)
+            viewConnectGlow.setBackgroundResource(R.drawable.bg_connect_circle_connected)
+            textConnectHint.text = "Tap to disconnect"
+            textConnectHint.setTextColor(resources.getColor(R.color.status_connected, null))
             val proxyName = when (ClashManager.currentMode) {
                 ClashManager.ProxyMode.SELECT -> ClashManager.selectedProxy?.name ?: "${ClashManager.proxies.size} proxies"
                 ClashManager.ProxyMode.URL_TEST -> "Auto Best (${ClashManager.proxies.size} proxies)"
@@ -131,10 +137,11 @@ class DashboardFragment : Fragment() {
         } else {
             textStatus.text = getString(R.string.vpn_disconnected)
             textStatus.setTextColor(resources.getColor(R.color.status_disconnected, null))
-            btnConnect.text = getString(R.string.connect)
+            viewConnectGlow.setBackgroundResource(R.drawable.bg_connect_circle)
+            textConnectHint.text = "Tap to connect"
+            textConnectHint.setTextColor(resources.getColor(R.color.text_muted, null))
             textProxyName.text = "Tap connect to start"
 
-            // If it was connected but now isn't, show a message
             if (wasConnected) {
                 textError.text = "VPN disconnected — check Logs tab for details"
                 textError.visibility = View.VISIBLE

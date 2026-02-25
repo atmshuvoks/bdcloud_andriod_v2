@@ -10,7 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:paddingHorizontal="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="16dp">
 
         <!-- Header -->
         <LinearLayout
@@ -18,16 +20,17 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginBottom="12dp">
+            android:layout_marginBottom="16dp">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/nav_pricing"
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:textColor="@color/text_primary"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnManage"
@@ -45,24 +48,22 @@
             android:text="Payment stays on web portal for reliability."
             android:textColor="@color/text_muted"
             android:textSize="13sp"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="20dp" />
 
         <!-- Plans -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/active_plans"
-            android:textSize="16sp"
-            android:textColor="@color/text_primary"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp" />
+            android:text="ACTIVE PLANS"
+            style="@style/BdCloud.SectionTitle"
+            android:layout_marginBottom="10dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerPlans"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:nestedScrollingEnabled="false"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="28dp" />
 
         <TextView
             android:id="@+id/textNoPlans"
@@ -80,16 +81,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="10dp">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/payment_history"
-                android:textSize="16sp"
-                android:textColor="@color/text_primary"
-                android:textStyle="bold" />
+                android:text="PAYMENT HISTORY"
+                style="@style/BdCloud.SectionTitle" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnRefreshHistory"

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- BDCLOUD Premium — Deep Space Theme System              -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
     <!-- Base dark theme -->
     <style name="Theme.BedCloudClash" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
@@ -23,43 +27,83 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <!-- Card style -->
+    <!-- ─── Card Styles ─── -->
+
+    <!-- Default glassmorphism card -->
     <style name="BdCloud.Card" parent="Widget.Material3.CardView.Elevated">
-        <item name="cardBackgroundColor">@color/card_bg</item>
-        <item name="cardCornerRadius">16dp</item>
-        <item name="cardElevation">4dp</item>
-        <item name="contentPadding">16dp</item>
+        <item name="cardBackgroundColor">@color/card_bg_solid</item>
+        <item name="cardCornerRadius">20dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="contentPadding">0dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/card_border</item>
     </style>
 
-    <!-- Primary Button -->
+    <!-- Active/selected card -->
+    <style name="BdCloud.Card.Active" parent="BdCloud.Card">
+        <item name="strokeColor">@color/card_border_active</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <!-- ─── Button Styles ─── -->
+
+    <!-- Primary glow button -->
     <style name="BdCloud.Button.Primary" parent="Widget.Material3.Button">
         <item name="backgroundTint">@color/secondary</item>
         <item name="android:textColor">@color/on_secondary</item>
-        <item name="cornerRadius">12dp</item>
+        <item name="cornerRadius">16dp</item>
         <item name="android:minHeight">52dp</item>
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.02</item>
     </style>
 
-    <!-- Secondary Button -->
+    <!-- Secondary outlined button -->
     <style name="BdCloud.Button.Secondary" parent="Widget.Material3.Button.OutlinedButton">
-        <item name="strokeColor">@color/secondary</item>
+        <item name="strokeColor">@color/card_border_active</item>
         <item name="android:textColor">@color/secondary</item>
-        <item name="cornerRadius">12dp</item>
+        <item name="cornerRadius">16dp</item>
         <item name="android:minHeight">48dp</item>
+        <item name="strokeWidth">1dp</item>
     </style>
 
-    <!-- Text Input -->
+    <!-- ─── Text Input ─── -->
+
     <style name="BdCloud.TextInput" parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/secondary</item>
         <item name="hintTextColor">@color/secondary</item>
-        <item name="boxCornerRadiusTopStart">12dp</item>
-        <item name="boxCornerRadiusTopEnd">12dp</item>
-        <item name="boxCornerRadiusBottomStart">12dp</item>
-        <item name="boxCornerRadiusBottomEnd">12dp</item>
+        <item name="boxCornerRadiusTopStart">16dp</item>
+        <item name="boxCornerRadiusTopEnd">16dp</item>
+        <item name="boxCornerRadiusBottomStart">16dp</item>
+        <item name="boxCornerRadiusBottomEnd">16dp</item>
+        <item name="boxStrokeWidth">1dp</item>
     </style>
 
     <style name="BdCloud.TextInput.EditText" parent="Widget.Material3.TextInputEditText.OutlinedBox">
         <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- ─── Chip Styles ─── -->
+
+    <style name="BdCloud.Chip" parent="Widget.Material3.Chip.Filter">
+        <item name="chipBackgroundColor">@color/chip_unselected_bg</item>
+        <item name="chipStrokeColor">@color/card_border</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipCornerRadius">24dp</item>
+        <item name="chipMinHeight">40dp</item>
+        <item name="android:textColor">@color/chip_text_color</item>
+        <item name="checkedIconVisible">false</item>
+        <item name="chipIconVisible">false</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- ─── Section Headers ─── -->
+
+    <style name="BdCloud.SectionTitle">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/text_muted</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.08</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 </resources>
