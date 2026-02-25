@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BDCLOUD shield + cloud icon for app launcher -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Shield outline -->
+    <path
+        android:pathData="M54,20 L28,32 L28,52 C28,68 38,82 54,88 C70,82 80,68 80,52 L80,32 Z"
+        android:fillColor="#00D4FF"
+        android:fillAlpha="0.15" />
+    <path
+        android:pathData="M54,20 L28,32 L28,52 C28,68 38,82 54,88 C70,82 80,68 80,52 L80,32 Z"
+        android:strokeColor="#00D4FF"
+        android:strokeWidth="2"
+        android:fillColor="#00000000" />
+
+    <!-- Cloud inside shield -->
+    <path
+        android:pathData="M62,54 C62,49.6 58.4,46 54,46 C50.3,46 47.2,48.5 46.3,52 C43.3,52.2 41,54.6 41,57.5 C41,60.5 43.5,63 46.5,63 L62,63 C64.8,63 67,60.8 67,58 C67,55.4 64.8,53.2 62,54Z"
+        android:fillColor="#00D4FF" />
+
+</vector>
