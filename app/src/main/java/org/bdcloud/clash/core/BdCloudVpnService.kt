@@ -64,8 +64,26 @@ class BdCloudVpnService : VpnService() {
 
         @Synchronized
         fun addLogLine(line: String) {
+            // Filter out internal noise from production logs
+            if (shouldFilterLog(line)) return
             _logLines.add(line)
             if (_logLines.size > 500) _logLines.removeAt(0)
+        }
+
+        private fun shouldFilterLog(line: String): Boolean {
+            // Block tun2socks traffic/routing logs
+            if (line.contains("INFO tunnel/")) return true
+            if (line.contains("tcp.go:")) return true
+            if (line.contains("copy data for")) return true
+            if (line.contains("DEBUG tunnel/")) return true
+            // Block mihomo internal config noise
+            if (line.contains("time=") && line.contains("level=info")) return true
+            if (line.contains("level=debug")) return true
+            if (line.contains("msg=") && !line.contains("[VPN]")) return true
+            // Block file paths and native lib info
+            if (line.contains("nativeLib") || line.contains("/data/app/")) return true
+            if (line.contains("Using native lib:")) return true
+            return false
         }
 
         @Synchronized
@@ -119,7 +137,7 @@ class BdCloudVpnService : VpnService() {
                 val code = try { mihomoProcess?.exitValue() } catch (_: Exception) { -1 }
                 throw Exception("mihomo exited immediately (code: $code)")
             }
-            addLogLine("[VPN] mihomo proxy started successfully")
+            addLogLine("[VPN] Proxy engine started")
 
             // ── Step 3: Create VPN TUN interface ──
             val builder = Builder()
@@ -138,16 +156,16 @@ class BdCloudVpnService : VpnService() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 builder.excludeRoute(android.net.IpPrefix(java.net.InetAddress.getByName("1.1.1.1"), 32))
                 builder.excludeRoute(android.net.IpPrefix(java.net.InetAddress.getByName("8.8.8.8"), 32))
-                addLogLine("[VPN] DNS excluded from VPN routes (API 33+)")
+                addLogLine("[VPN] DNS routing configured")
             } else {
-                addLogLine("[WARN] API < 33: DNS may not work through VPN")
+                addLogLine("[VPN] DNS routing configured (legacy)")
             }
 
             vpnInterface = builder.establish()
                 ?: throw Exception("VPN interface creation failed — permission denied?")
 
             val tunFd = vpnInterface!!.fd
-            addLogLine("[VPN] VPN interface established (fd=$tunFd)")
+            addLogLine("[VPN] Secure tunnel established")
 
             // ── Step 5: Start tun2socks via JNI (preserves VPN fd) ──
             startTun2socks(tun2socksPath, tunFd)
@@ -159,7 +177,7 @@ class BdCloudVpnService : VpnService() {
                     val logFile = File(filesDir, "tun2socks.log")
                     val errorMsg = try { logFile.readText().trim() } catch (_: Exception) { "" }
                     if (errorMsg.isNotEmpty()) {
-                        errorMsg.lines().take(10).forEach { addLogLine("[TUN2SOCKS] $it") }
+                        addLogLine("[VPN] Bridge startup error — check connection")
                     }
                     val exitResult = NativeHelper.waitForProcess(tun2socksPid)
                     val exitDesc = NativeHelper.decodeExitResult(exitResult)
@@ -168,7 +186,7 @@ class BdCloudVpnService : VpnService() {
             } else {
                 throw Exception("tun2socks fork failed (pid=$tun2socksPid)")
             }
-            addLogLine("[VPN] tun2socks bridge started successfully (pid=$tun2socksPid)")
+            addLogLine("[VPN] Network bridge active")
 
             updateNotification("Connected — BDCLOUD VPN")
 
@@ -199,7 +217,7 @@ class BdCloudVpnService : VpnService() {
         pb.redirectErrorStream(true)
 
         mihomoProcess = pb.start()
-        addLogLine("[CORE] mihomo process started")
+        Log.d(TAG, "mihomo process started")
 
         // Read mihomo stdout in background
         scope?.launch {
@@ -207,10 +225,10 @@ class BdCloudVpnService : VpnService() {
                 val reader = BufferedReader(InputStreamReader(mihomoProcess?.inputStream))
                 var line: String?
                 while (reader.readLine().also { line = it } != null) {
-                    addLogLine(line ?: continue)
+                    Log.d(TAG, line ?: continue)
                 }
             } catch (e: Exception) {
-                if (_isRunning.get()) addLogLine("[WARN] mihomo log reader stopped: ${e.message}")
+                if (_isRunning.get()) Log.w(TAG, "log reader stopped: ${e.message}")
             }
         }
 
@@ -218,7 +236,7 @@ class BdCloudVpnService : VpnService() {
         scope?.launch {
             try {
                 val exitCode = mihomoProcess?.waitFor() ?: -1
-                addLogLine("[CORE] mihomo exited with code: $exitCode")
+                addLogLine("[VPN] Proxy engine stopped")
                 if (_isRunning.get()) {
                     withContext(Dispatchers.Main) {
                         _isRunning.set(false)
@@ -248,11 +266,11 @@ class BdCloudVpnService : VpnService() {
             binaryPath,          // argv[0]
             "-device", "fd://$childFd",
             "-proxy", socksAddr,
-            "-loglevel", "debug"  // debug level to capture all output
+            "-loglevel", "warning"  // reduce log noise in production
         )
 
         tun2socksPid = NativeHelper.forkExecWithFd(tunFd, childFd, binaryPath, args, logFile.absolutePath)
-        addLogLine("[TUN2SOCKS] Forked with pid=$tun2socksPid (vpn_fd=$tunFd → child_fd=$childFd → $socksAddr)")
+        Log.d(TAG, "tun2socks forked pid=$tun2socksPid fd=$tunFd→$childFd $socksAddr")
 
         // Monitor tun2socks process via waitpid in background
         scope?.launch {
@@ -265,12 +283,12 @@ class BdCloudVpnService : VpnService() {
                     val logContent = logFile.readText().trim()
                     if (logContent.isNotEmpty()) {
                         logContent.lines().forEach { line ->
-                            addLogLine("[TUN2SOCKS] $line")
+                            Log.d(TAG, "tun2socks: $line")
                         }
                     }
                 } catch (_: Exception) { }
 
-                addLogLine("[TUN2SOCKS] Process $tun2socksPid exited: $exitDesc")
+                addLogLine("[VPN] Network bridge stopped")
 
                 if (_isRunning.get()) {
                     withContext(Dispatchers.Main) {
@@ -290,10 +308,10 @@ class BdCloudVpnService : VpnService() {
         val nativeLibDir = applicationInfo.nativeLibraryDir
         val f = File(nativeLibDir, name)
         if (f.exists() && f.canExecute()) {
-            addLogLine("[CORE] Using native lib: ${f.absolutePath}")
+            Log.d(TAG, "Using native lib: ${f.absolutePath}")
             return f.absolutePath
         }
-        addLogLine("[ERROR] $name not found in $nativeLibDir")
+        addLogLine("[ERROR] Required component missing: $name")
         return null
     }
 
