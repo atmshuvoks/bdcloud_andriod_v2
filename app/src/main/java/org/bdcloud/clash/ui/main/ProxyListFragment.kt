@@ -60,7 +60,7 @@ class ProxyListFragment : Fragment() {
         btnRefresh.setOnClickListener { loadProxies() }
         btnPingAll.setOnClickListener { pingAllProxies() }
 
-        // Check if we already have proxies from ClashManager
+        // Show cached proxies immediately (if any)
         if (ClashManager.proxies.isNotEmpty()) {
             proxies.clear()
             proxies.addAll(ClashManager.proxies)
@@ -75,9 +75,10 @@ class ProxyListFragment : Fragment() {
             }
 
             textEmpty.visibility = if (proxies.isEmpty()) View.VISIBLE else View.GONE
-        } else {
-            loadProxies()
         }
+
+        // Always refresh from server (servers can be added/removed anytime)
+        loadProxies()
     }
 
     private fun loadProxies() {

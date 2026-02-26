@@ -1,10 +1,15 @@
 package org.bdcloud.clash.ui.main
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.bdcloud.clash.R
@@ -16,6 +21,16 @@ import org.bdcloud.clash.util.TokenManager
 class MainActivity : AppCompatActivity() {
 
     private lateinit var bottomNav: BottomNavigationView
+
+    // Notification permission launcher (Android 13+)
+    private val notifPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { granted ->
+        // After permission result, check for notifications
+        if (granted) {
+            AppNotificationManager.checkNotifications(this)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +47,10 @@ class MainActivity : AppCompatActivity() {
             loadFragment(DashboardFragment())
         }
 
-        // Check for updates and notifications after UI loads
+        // Request notification permission + check updates after UI loads
         Handler(Looper.getMainLooper()).postDelayed({
+            requestNotificationPermission()
             AppUpdateManager.checkForUpdate(this)
-            AppNotificationManager.checkNotifications(this)
         }, 2000)
 
         bottomNav.setOnItemSelectedListener { item ->
@@ -50,6 +65,20 @@ class MainActivity : AppCompatActivity() {
             loadFragment(fragment)
             true
         }
+    }
+
+    private fun requestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED
+            ) {
+                // Ask user for permission
+                notifPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                return
+            }
+        }
+        // Permission already granted or not needed (< Android 13)
+        AppNotificationManager.checkNotifications(this)
     }
 
     private fun loadFragment(fragment: Fragment) {
@@ -67,3 +96,4 @@ class MainActivity : AppCompatActivity() {
         finish()
     }
 }
+
