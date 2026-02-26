@@ -212,7 +212,7 @@ data class AppNotification(
 
 @JsonClass(generateAdapter = true)
 data class NotificationsResponse(
-    val success: Boolean,
+    val success: Boolean? = true,
     val notifications: List<AppNotification>? = null,
     val error: ErrorBody? = null
 )
