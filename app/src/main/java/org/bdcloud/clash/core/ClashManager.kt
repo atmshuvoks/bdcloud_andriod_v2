@@ -167,18 +167,18 @@ object ClashManager {
                 .readTimeout(3, java.util.concurrent.TimeUnit.SECONDS)
                 .build()
 
-            val body = okhttp3.RequestBody.create(
-                okhttp3.MediaType.parse("application/json"),
-                json
+            val requestBody = okhttp3.RequestBody.create(
+                okhttp3.MediaType.get("application/json"), json
             )
+
             val request = okhttp3.Request.Builder()
                 .url(url)
-                .put(body)
+                .put(requestBody)
                 .addHeader("Authorization", "Bearer $secret")
                 .build()
 
             val response = client.newCall(request).execute()
-            Log.d(TAG, "Select proxy '$proxyName': ${response.code()}")
+            Log.d(TAG, "Select proxy '$proxyName': ${response.code}")
             response.close()
         } catch (e: Exception) {
             Log.w(TAG, "Failed to select proxy: ${e.message}")
