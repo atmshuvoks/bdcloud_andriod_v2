@@ -188,6 +188,18 @@ class BdCloudVpnService : VpnService() {
             }
             addLogLine("[VPN] Network bridge active")
 
+            // ── Step 6: Set selected proxy in mihomo (SELECT mode) ──
+            if (ClashManager.currentMode == ClashManager.ProxyMode.SELECT) {
+                val proxyName = ClashManager.selectedProxy?.name
+                if (proxyName != null) {
+                    scope?.launch {
+                        Thread.sleep(1000) // wait for mihomo API to be ready
+                        ClashManager.selectProxyInMihomo(proxyName)
+                        addLogLine("[VPN] Using proxy: $proxyName")
+                    }
+                }
+            }
+
             updateNotification("Connected — BDCLOUD VPN")
 
         } catch (e: Exception) {

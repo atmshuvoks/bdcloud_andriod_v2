@@ -106,7 +106,7 @@ object ClashManager {
             ProxyMode.SELECT -> {
                 sb.appendLine("  - name: \"BDCLOUD\"")
                 sb.appendLine("    type: select")
-                sb.appendLine("    proxies: [$proxyNamesStr, \"DIRECT\"]")
+                sb.appendLine("    proxies: [$proxyNamesStr]")
             }
             ProxyMode.URL_TEST -> {
                 sb.appendLine("  - name: \"BDCLOUD\"")
@@ -151,6 +151,39 @@ object ClashManager {
     }
 
     fun getConfigPath(): String = currentConfigPath
+
+    /**
+     * Tell mihomo which proxy to use in SELECT mode via controller API.
+     * Must call AFTER mihomo has started.
+     */
+    fun selectProxyInMihomo(proxyName: String) {
+        try {
+            val url = "http://127.0.0.1:$CONTROLLER_PORT/proxies/BDCLOUD"
+            val secret = getControllerSecret()
+            val json = "{\"name\":\"${sanitizeName(proxyName)}\"}"
+
+            val client = okhttp3.OkHttpClient.Builder()
+                .connectTimeout(3, java.util.concurrent.TimeUnit.SECONDS)
+                .readTimeout(3, java.util.concurrent.TimeUnit.SECONDS)
+                .build()
+
+            val body = okhttp3.RequestBody.create(
+                okhttp3.MediaType.parse("application/json"),
+                json
+            )
+            val request = okhttp3.Request.Builder()
+                .url(url)
+                .put(body)
+                .addHeader("Authorization", "Bearer $secret")
+                .build()
+
+            val response = client.newCall(request).execute()
+            Log.d(TAG, "Select proxy '$proxyName': ${response.code()}")
+            response.close()
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to select proxy: ${e.message}")
+        }
+    }
 
     private fun sanitizeName(name: String): String {
         return name.replace("\"", "'").replace("\n", " ").trim()
