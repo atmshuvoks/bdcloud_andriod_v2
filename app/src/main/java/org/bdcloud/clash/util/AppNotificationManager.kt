@@ -42,8 +42,8 @@ object AppNotificationManager {
                         showNotification(activity, notif.id, notif.title, notif.message)
                     }
                     // Mark as seen
-                    val updatedIds = seenIds + newNotifications.map { it.id }
-                    saveSeenIds(activity, updatedIds.takeLast(100)) // keep last 100
+                    val updatedIds = (seenIds + newNotifications.map { it.id }).toList().takeLast(100)
+                    saveSeenIds(activity, updatedIds) // keep last 100
                 }
             } catch (e: Exception) {
                 Log.d(TAG, "Notification check failed: ${e.message}")

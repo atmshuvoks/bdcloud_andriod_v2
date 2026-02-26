@@ -266,7 +266,7 @@ class BdCloudVpnService : VpnService() {
             binaryPath,          // argv[0]
             "-device", "fd://$childFd",
             "-proxy", socksAddr,
-            "-loglevel", "warning"  // reduce log noise in production
+            "-loglevel", "info"  // safe level that suppresses debug traffic noise
         )
 
         tun2socksPid = NativeHelper.forkExecWithFd(tunFd, childFd, binaryPath, args, logFile.absolutePath)
