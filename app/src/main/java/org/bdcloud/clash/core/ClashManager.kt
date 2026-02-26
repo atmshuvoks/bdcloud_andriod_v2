@@ -168,7 +168,7 @@ object ClashManager {
                 .build()
 
             val requestBody = okhttp3.RequestBody.create(
-                okhttp3.MediaType.get("application/json"), json
+                null, json
             )
 
             val request = okhttp3.Request.Builder()
