@@ -30,9 +30,9 @@ object AppNotificationManager {
     private const val CHANNEL_ID = "bdcloud_messages"
     private const val PREFS_KEY = "seen_notification_ids"
 
-    // GitHub Gist raw URL (cache-busted with timestamp)
+    // GitHub Gist raw URL (no filename — secret gists use /raw/ only)
     private const val GIST_URL =
-        "https://gist.githubusercontent.com/atmshuvoks/85499c5ef90eff060ffc4108b849470e/raw/app_notifications.json"
+        "https://gist.githubusercontent.com/atmshuvoks/85499c5ef90eff060ffc4108b849470e/raw/"
 
     private val client = OkHttpClient()
     private val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
